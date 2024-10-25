@@ -185,3 +185,105 @@ Here are some expected results from your queries:
   data from the database.
 - **worldcup.sql**: SQL file that contains the full dump of
   the `worldcup` database.
+
+### Project Flowchart
+
+The flowchart outlines the primary steps in building and managing the World Cup database project, from database creation to data handling and verification.
+
+```plaintext
++---------------------------+
+|       Start Process       |
++---------------------------+
+             |
+             v
++---------------------------+
+| Connect to PostgreSQL     |
+| Command: psql --username=... |
++---------------------------+
+             |
+             v
++---------------------------+
+| Create 'worldcup' Database|
+| Command: CREATE DATABASE worldcup; |
++---------------------------+
+             |
+             v
++---------------------------+
+| Define Tables             |
+| Command: CREATE TABLE teams (...); |
+|         CREATE TABLE games (...); |
++---------------------------+
+             |
+             v
++---------------------------+
+| Assign Primary & Foreign  |
+| Keys for Relationships    |
+| Command: ALTER TABLE ...  |
++---------------------------+
+             |
+             v
++---------------------------+
+| Make Shell Scripts        |
+| Executable (Permissions)  |
+| Command: chmod +x insert_data.sh; |
++---------------------------+
+             |
+             v
++---------------------------+
+| Execute Shell Scripts     |
+| Command: ./insert_data.sh; |
+|         ./queries.sh       |
++---------------------------+
+             |
+             v
++---------------------------+
+| Verify Data Insertion     |
+| Command: SELECT * FROM teams; |
+|         SELECT * FROM games; |
++---------------------------+
+             |
+             v
++---------------------------+
+| Export Database to SQL    |
+| Command: pg_dump -cC ...  |
++---------------------------+
+             |
+             v
++---------------------------+
+|        End Process        |
++---------------------------+
+```
+
+### Entity-Relationship Diagram (ERD)
+
+The ERD illustrates the relationships and attributes of the primary tables in the World Cup database, `teams` and `games`.
+
+1. **Teams Table**
+   - **team_id** (Primary Key): Unique identifier for each team.
+   - **name**: Team name, unique and non-null.
+
+2. **Games Table**
+   - **game_id** (Primary Key): Unique identifier for each game.
+   - **year**: Year of the game.
+   - **round**: Round in which the game was played.
+   - **winner_id** (Foreign Key): References `team_id` in `teams`, indicating the winning team.
+   - **opponent_id** (Foreign Key): References `team_id` in `teams`, indicating the opposing team.
+   - **winner_goals**: Goals scored by the winning team.
+   - **opponent_goals**: Goals scored by the opponent team.
+
+ERD:
+
+```plaintext
++---------+        +-----------+
+| TEAMS   |        |  GAMES    |
++---------+        +-----------+
+| team_id |<-------| winner_id
+| name    |    |   | opponent_id
++---------+    |   | year
+               |   | round
+               |   | winner_goals
+               |   | opponent_goals
+               +---+
+```
+
+This ERD highlights the one-to-many relationship between `teams` and `games`: each game is associated with two teams (a winner and an opponent), and each team can participate in multiple games. Foreign keys in `games` link to the `teams` table, ensuring relational integrity.
