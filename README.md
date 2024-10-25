@@ -6,7 +6,39 @@ retrieve specific information from it.
 
 This project is part of the
 [FreeCodeCamp Relational Database Certification](https://www.freecodecamp.org/learn/relational-database).
-[Build a world cup database Project](https://www.freecodecamp.org/learn/relational-database/build-a-world-cup-database-project/build-a-world-cup-database).
+[Build a world cup database project](https://www.freecodecamp.org/learn/relational-database/build-a-world-cup-database-project/build-a-world-cup-database).
+
+Here’s an improved table of contents for your World Cup
+Database project, following the format you provided:
+
+## Table of Contents
+
+1. [Create Database and Connect](#1-create-database-and-connect):
+   Set up and connect to the PostgreSQL database.
+2. [Create Required Tables](#2-create-required-tables):
+   Define tables for `teams` and `games`.
+3. [Assign Primary and Foreign Keys](#3-assign-primary-and-foreign-keys):
+   Ensure data integrity with primary and foreign key
+   constraints.
+4. [Make Shell Scripts Executable](#4-make-shell-scripts-executable):
+   Set permissions for shell scripts.
+5. [Run Shell Scripts (Insert Data First)](#5-run-shell-scripts-insert-data-first):
+   Execute scripts to insert data and run queries.
+6. [Check if Data is in the Database](#6-check-if-data-is-in-the-database):
+   Verify successful data insertion through SQL queries.
+7. [Export Database to SQL File](#7-export-database-to-sql-file):
+   Backup the database using `pg_dump`.
+8. [Expected Output](#8-expected-output): Review the
+   anticipated results from SQL queries.
+9. [Files in the Project](#9-files-in-the-project): Overview
+   of project files and their purposes.
+10. [Project Flowchart](#10-project-flowchart): Visual
+    representation of the project workflow.
+11. [Entity-Relationship Diagram (ERD)](#11-entity-relationship-diagram-erd):
+    Illustrate relationships between tables.
+
+Feel free to adjust any of the descriptions to better fit
+your project!
 
 ## Project Steps
 
@@ -43,6 +75,15 @@ CREATE TABLE games (
 ```
 
 ### 3. Assign Primary and Foreign Keys
+
+- A primary key is a unique identifier for a record in a
+  table.
+  - It ensures that no two rows have the same value for the
+    primary key column(s).
+- A foreign key is a field (or collection of fields) in one
+  table that uniquely identifies a row of another table or
+  the same table.
+  - It establishes a relationship between the two tables.
 
 Set up primary and foreign key constraints:
 
@@ -125,7 +166,7 @@ following command:
 pg_dump -cC --inserts -U freecodecamp worldcup > worldcup.sql
 ```
 
-## Expected Output
+## 8. Expected Output
 
 Here are some expected results from your queries:
 
@@ -176,7 +217,7 @@ Here are some expected results from your queries:
   - Colombia
   - Costa Rica
 
-## Files in the Project
+## 9. Files in the Project
 
 - **games.csv**: CSV file containing match data.
 - **insert_data.sh**: Bash script to populate the database
@@ -186,9 +227,11 @@ Here are some expected results from your queries:
 - **worldcup.sql**: SQL file that contains the full dump of
   the `worldcup` database.
 
-### Project Flowchart
+### 10. Project Flowchart
 
-The flowchart outlines the primary steps in building and managing the World Cup database project, from database creation to data handling and verification.
+The flowchart outlines the primary steps in building and
+managing the World Cup database project, from database
+creation to data handling and verification.
 
 ```plaintext
 +---------------------------+
@@ -254,20 +297,27 @@ The flowchart outlines the primary steps in building and managing the World Cup 
 +---------------------------+
 ```
 
-### Entity-Relationship Diagram (ERD)
+### 11. Entity-Relationship Diagram (ERD)
 
-The ERD illustrates the relationships and attributes of the primary tables in the World Cup database, `teams` and `games`.
+The ERD illustrates the relationships and attributes of the
+primary tables in the World Cup database, `teams` and
+`games`.
 
 1. **Teams Table**
-   - **team_id** (Primary Key): Unique identifier for each team.
+
+   - **team_id** (Primary Key): Unique identifier for each
+     team.
    - **name**: Team name, unique and non-null.
 
 2. **Games Table**
-   - **game_id** (Primary Key): Unique identifier for each game.
+   - **game_id** (Primary Key): Unique identifier for each
+     game.
    - **year**: Year of the game.
    - **round**: Round in which the game was played.
-   - **winner_id** (Foreign Key): References `team_id` in `teams`, indicating the winning team.
-   - **opponent_id** (Foreign Key): References `team_id` in `teams`, indicating the opposing team.
+   - **winner_id** (Foreign Key): References `team_id` in
+     `teams`, indicating the winning team.
+   - **opponent_id** (Foreign Key): References `team_id` in
+     `teams`, indicating the opposing team.
    - **winner_goals**: Goals scored by the winning team.
    - **opponent_goals**: Goals scored by the opponent team.
 
@@ -286,4 +336,8 @@ ERD:
                +---+
 ```
 
-This ERD highlights the one-to-many relationship between `teams` and `games`: each game is associated with two teams (a winner and an opponent), and each team can participate in multiple games. Foreign keys in `games` link to the `teams` table, ensuring relational integrity.
+This ERD highlights the one-to-many relationship between
+`teams` and `games`: each game is associated with two teams
+(a winner and an opponent), and each team can participate in
+multiple games. Foreign keys in `games` link to the `teams`
+table, ensuring relational integrity.
