@@ -28,13 +28,15 @@ Database project, following the format you provided:
    Verify successful data insertion through SQL queries.
 7. [Export Database to SQL File](#7-export-database-to-sql-file):
    Backup the database using `pg_dump`.
-8. [Expected Output](#8-expected-output): Review the
+8. [Update Teams and Games](#8-update-teams-and-games):
+   Modify existing records for teams and games.
+9. [Expected Output](#9-expected-output): Review the
    anticipated results from SQL queries.
-9. [Files in the Project](#9-files-in-the-project): Overview
-   of project files and their purposes.
-10. [Project Flowchart](#10-project-flowchart): Visual
+10. [Files in the Project](#10-files-in-the-project):
+    Overview of project files and their purposes.
+11. [Project Flowchart](#11-project-flowchart): Visual
     representation of the project workflow.
-11. [Entity-Relationship Diagram (ERD)](#11-entity-relationship-diagram-erd):
+12. [Entity-Relationship Diagram (ERD)](#12-entity-relationship-diagram-erd):
     Illustrate relationships between tables.
 
 Feel free to adjust any of the descriptions to better fit
@@ -166,7 +168,32 @@ following command:
 pg_dump -cC --inserts -U freecodecamp worldcup > worldcup.sql
 ```
 
-## 8. Expected Output
+### 8. Update Teams and Games
+
+To update records in the `teams` or `games` tables, use the
+`UPDATE` SQL command.
+
+#### Updating a Team
+
+To change the name of a team, execute the following command:
+
+```sql
+UPDATE teams
+SET name = 'New Team Name'
+WHERE team_id = 1; -- Replace 1 with the actual team_id
+```
+
+#### Updating a Game
+
+To change the score of a game, you can use:
+
+```sql
+UPDATE games
+SET winner_goals = 3, opponent_goals = 2
+WHERE game_id = 1; -- Replace 1 with the actual game_id
+```
+
+## 9. Expected Output
 
 Here are some expected results from your queries:
 
@@ -217,7 +244,7 @@ Here are some expected results from your queries:
   - Colombia
   - Costa Rica
 
-## 9. Files in the Project
+## 10. Files in the Project
 
 - **games.csv**: CSV file containing match data.
 - **insert_data.sh**: Bash script to populate the database
@@ -227,7 +254,7 @@ Here are some expected results from your queries:
 - **worldcup.sql**: SQL file that contains the full dump of
   the `worldcup` database.
 
-### 10. Project Flowchart
+### 11. Project Flowchart
 
 The flowchart outlines the primary steps in building and
 managing the World Cup database project, from database
@@ -297,7 +324,7 @@ creation to data handling and verification.
 +---------------------------+
 ```
 
-### 11. Entity-Relationship Diagram (ERD)
+### 12. Entity-Relationship Diagram (ERD)
 
 The ERD illustrates the relationships and attributes of the
 primary tables in the World Cup database, `teams` and
