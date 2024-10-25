@@ -5,7 +5,8 @@ store World Cup match data and writing SQL queries to
 retrieve specific information from it.
 
 This project is part of the
-[FreeCodeCamp Relational Database Certification](https://www.freecodecamp.org/learn/relational-database/build-a-world-cup-database-project/build-a-world-cup-database).
+[FreeCodeCamp Relational Database Certification](https://www.freecodecamp.org/learn/relational-database).
+[Build a world cup database Project](https://www.freecodecamp.org/learn/relational-database/build-a-world-cup-database-project/build-a-world-cup-database).
 
 ## Project Steps
 
